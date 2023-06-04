@@ -2,11 +2,12 @@ import plotly.graph_objects as go
 from PIL import Image
 import pandas as pd
 
-img = Image.open('map.png')
+img = Image.open('C:\\Users\\creep\\Desktop\\studia\\sem4\\dashboard\\map.png')
+
 
 i_x, i_y = img.size
 
-cities_coordinates = pd.read_csv("cities.csv")
+cities_coordinates = pd.read_csv("C:\\Users\\creep\\Desktop\\studia\\sem4\\dashboard\\cities.csv")
 cities_coordinates["Latitude"] = cities_coordinates["Latitude"].apply(lambda x : (x - 48.84) / (55.32 - 48.84))
 cities_coordinates["Longitude"] = cities_coordinates["Longitude"].apply(lambda x : (x - 13.50) / (24.80 - 13.50))
 

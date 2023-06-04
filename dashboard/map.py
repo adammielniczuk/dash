@@ -3,6 +3,8 @@ import pandas as pd
 import base64
 
 
+
+
 i_x, i_y = 960, 960
 scale = 1
 i_x /= scale
@@ -86,5 +88,4 @@ map_fig.update_layout(
     ]
 )
 
-map_fig.show()
 
