@@ -1,4 +1,12 @@
 import plotly.graph_objects as go
+import micropip
+
+async def inst():
+    await micropip.install('pillow')
+
+async def main():
+    await inst()
+main()
 from PIL import Image
 import pandas as pd
 
