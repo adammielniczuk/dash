@@ -1,12 +1,6 @@
 from shiny import App, render, ui
-import micropip
+import os
 
-async def ins():
-    await micropip.install('shinywidgets')
-    await micropip.install('pillow')
-async def main():
-    await ins()
-main()
 from shinywidgets import output_widget, render_widget
 import plotly.graph_objects as go
 import plotly.io as pio
@@ -37,6 +31,7 @@ def server(input, output, session):
 
 
 app = App(app_ui, server)
+
 
 if __name__ == '__main__':
     app.run()

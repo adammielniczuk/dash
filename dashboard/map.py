@@ -1,20 +1,25 @@
 import plotly.graph_objects as go
 import pandas as pd
 import base64
+import os
 
 
+script_directory = os.path.dirname(os.path.abspath(__file__))
 
-
+data_folder = os.path.join(script_directory, 'data')
+map_path=os.path.join(data_folder, 'map.png')
+cities_path=os.path.join(data_folder, 'cities.csv')
+late_path=os.path.join(data_folder, 'city_late.csv')
 i_x, i_y = 960, 960
 scale = 1
 i_x /= scale
 i_y /= scale
 
-cities_coordinates = pd.read_csv("data/cities.csv")
+cities_coordinates = pd.read_csv(cities_path)
 cities_coordinates["Latitude"] = cities_coordinates["Latitude"].apply(lambda x : (x - 48.84) / (55.32 - 48.84))
 cities_coordinates["Longitude"] = cities_coordinates["Longitude"].apply(lambda x : (x - 13.50) / (24.80 - 13.50))
 
-late_times = pd.read_csv("data/city_late.csv", sep=";")
+late_times = pd.read_csv(late_path, sep=";")
 late_times = late_times.sort_values('station')
 late_times = late_times.set_index('station')
 
@@ -52,7 +57,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(open("data/map.png", "rb").read()).decode(),
+            source="data:image/png;base64," + base64.b64encode(open(map_path, "rb").read()).decode(),
             xref="paper",
             yref="paper",
             x=0,
