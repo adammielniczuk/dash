@@ -1,4 +1,7 @@
 from shiny import App, render, ui
+import pyodide
+
+pyodide.loadPackage('shinywidgets')
 from shinywidgets import output_widget, render_widget
 import plotly.graph_objects as go
 import plotly.io as pio
