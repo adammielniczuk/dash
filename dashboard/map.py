@@ -1,16 +1,18 @@
 import plotly.graph_objects as go
-from PIL import Image
 import pandas as pd
+import base64
 
-img = Image.open('map.png')
 
-i_x, i_y = img.size
+i_x, i_y = 960, 960
+scale = 1
+i_x /= scale
+i_y /= scale
 
-cities_coordinates = pd.read_csv("cities.csv")
+cities_coordinates = pd.read_csv("data/cities.csv")
 cities_coordinates["Latitude"] = cities_coordinates["Latitude"].apply(lambda x : (x - 48.84) / (55.32 - 48.84))
 cities_coordinates["Longitude"] = cities_coordinates["Longitude"].apply(lambda x : (x - 13.50) / (24.80 - 13.50))
 
-late_times = pd.read_csv("city_late.csv", sep=";")
+late_times = pd.read_csv("data/city_late.csv", sep=";")
 late_times = late_times.sort_values('station')
 late_times = late_times.set_index('station')
 
@@ -48,7 +50,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source=img,
+            source="data:image/png;base64," + base64.b64encode(open("data/map.png", "rb").read()).decode(),
             xref="paper",
             yref="paper",
             x=0,
@@ -84,4 +86,5 @@ map_fig.update_layout(
     ]
 )
 
+map_fig.show()
 
