@@ -58,7 +58,7 @@ img=pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(img).read().decode(),
+            source="data:image/png;base64," + base64.b64encode(img.getvalue().encode('utf-8')).read().decode(),
             xref="paper",
             yref="paper",
             x=0,
