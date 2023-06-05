@@ -3,6 +3,7 @@ import pandas as pd
 import base64
 import os
 from pathlib import Path
+import urllib.request
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
@@ -17,11 +18,11 @@ i_y /= scale
 
 dataF=Path(__file__).parent / 'data'
 
-cities_coordinates = pd.read_csv(dataF/'cities.csv')
+cities_coordinates = pd.read_csv('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/cities.csv')
 cities_coordinates["Latitude"] = cities_coordinates["Latitude"].apply(lambda x : (x - 48.84) / (55.32 - 48.84))
 cities_coordinates["Longitude"] = cities_coordinates["Longitude"].apply(lambda x : (x - 13.50) / (24.80 - 13.50))
 
-late_times = pd.read_csv(dataF/'city_late.csv', sep=";")
+late_times = pd.read_csv('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/city_late.csv', sep=";")
 late_times = late_times.sort_values('station')
 late_times = late_times.set_index('station')
 
@@ -59,7 +60,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(open(dataF/'map.png', "rb").read()).decode(),
+            source="data:image/png;base64," + base64.b64encode(urllib.request.urlopen('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png').read()).decode(),
             xref="paper",
             yref="paper",
             x=0,
