@@ -1,9 +1,6 @@
 from shiny import App, render, ui
 import os
-import micropip
-async def l():
-    await micropip.install("shinywidgets")
-l()
+
 from shinywidgets import output_widget, render_widget
 import plotly.graph_objects as go
 import plotly.io as pio
