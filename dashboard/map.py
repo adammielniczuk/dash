@@ -53,12 +53,12 @@ layout = go.Layout(
 
 # Create the figure and add the traces and layout
 map_fig = go.Figure(data=traces, layout=layout)
-img=pyodide.http.pyfetch('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png')
+img=pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png')
 # Add a custom background image using CSS
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(img.bytes()).read().decode(),
+            source="data:image/png;base64," + base64.b64encode(img).read().decode(),
             xref="paper",
             yref="paper",
             x=0,
