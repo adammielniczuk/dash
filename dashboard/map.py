@@ -58,7 +58,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(pyodide.http.pyfetch('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png').bytes()).read().decode(),
+            source="data:image/png;base64," + base64.b64encode((pyodide.http.pyfetch('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png')).bytes()).read().decode(),
             xref="paper",
             yref="paper",
             x=0,
