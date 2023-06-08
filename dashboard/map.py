@@ -59,7 +59,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source=pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'),
+            source='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png',
             xref="paper",
             yref="paper",
             x=0,
