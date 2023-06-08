@@ -3,13 +3,13 @@ import pandas as pd
 import base64
 import pyodide
 from pathlib import Path
-from PIL import Image
+
 
 #data_folder = os.path.join(script_directory, 'data')
 #map_path=os.path.join(data_folder, 'map.png')
 #cities_path=os.path.join(data_folder, 'cities.csv')
 #late_path=os.path.join(data_folder, 'city_late.csv')
-img=Image.open(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'))
+#img=Image.open(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'))
 i_x, i_y = 960, 960
 scale = 1
 i_x /= scale
@@ -59,7 +59,7 @@ map_fig = go.Figure(data=traces, layout=layout)
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source=img,
+            source=pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'),
             xref="paper",
             yref="paper",
             x=0,
