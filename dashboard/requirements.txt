@@ -1,2 +1,3 @@
 https://files.pythonhosted.org/packages/15/75/fa60cba3521138f9940b2e0aa72faaf7c5c9c057dcd66b068f16ff7d0333/shinywidgets-0.2.1-py3-none-any.whl
 https://files.pythonhosted.org/packages/50/7d/2c8b7bba2b1c2b5d1299f22fa7853f09b573c84e63b62870c13a6ec11990/ipywidgets-8.0.6-py3-none-any.whl
+Pillow=9.1.1

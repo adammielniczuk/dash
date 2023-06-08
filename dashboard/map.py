@@ -3,12 +3,13 @@ import pandas as pd
 import base64
 import pyodide
 from pathlib import Path
-
+from PIL import Image
 
 #data_folder = os.path.join(script_directory, 'data')
 #map_path=os.path.join(data_folder, 'map.png')
 #cities_path=os.path.join(data_folder, 'cities.csv')
 #late_path=os.path.join(data_folder, 'city_late.csv')
+img=Image.open(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'))
 i_x, i_y = 960, 960
 scale = 1
 i_x /= scale
@@ -53,12 +54,12 @@ layout = go.Layout(
 
 # Create the figure and add the traces and layout
 map_fig = go.Figure(data=traces, layout=layout)
-img=pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png')
+
 # Add a custom background image using CSS
 map_fig.update_layout(
     images=[
         go.layout.Image(
-            source="data:image/png;base64," + base64.b64encode(img.getvalue().encode('utf-8')).decode(),
+            source=img,
             xref="paper",
             yref="paper",
             x=0,
