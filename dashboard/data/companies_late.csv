@@ -1,0 +1,20 @@
+Company,Late_Percent,late_trains,late_total_time,colors,Logo_Path
+Arriva RP,0.9169,41664,645971,#009CB3,data\Arriva.png
+CARGO Master,0.7799,164,5602,#FFFF67,data\CM.jpg
+Ceskie Drahy,0.9247,420,6411,#002664,data\CD.png
+Koleje Dolnośląskie,0.8144,373563,5471417,#F4CD00,data\KD.png
+Koleje Małopolskie,0.9193,79801,1033323,#E63A2E,data\KM.jpg
+Koleje Mazowieckie,0.8985,553710,10166263,#00A64D,data\KMZ.jpg
+Koleje Śląskie,0.9187,184639,2623828,#0097F0,data\KS.png
+Koleje Wielkopolskie,0.9065,165792,2782550,#E4000F,data\KW.png
+LEO Express,0.7583,581,14248,#F18103,data\LEO.jpg
+Łódzka Kolej Aglomeracyjna,0.9125,105712,1496405,#19171C,data\LKA.jpg
+ODEG Ostdeutsche Eisenbahn,0.9429,1349,18056,#025F64,data\ODEG.jpg
+Parowozownia Wolsztyn,1,0,,#000000,data\Wolsztyn.png
+PKP CARGO ,0.9084,48,897,#005CAA,data\PKP.jpg
+PKP INTERCITY,0.6953,769913,21720390,#133C74,data\IC.png
+SKM Trójmiato ,0.9597,79952,912839,#B59000,data\SKM.jpg
+POLREGIO,0.8731,1354591,22746754,#FF0000,data\REGIO.png
+RegioJet ,0.4175,1821,124334,#FBBB00,data\RJ.png
+SKPL Cargo ,0.9272,520,21080,#B41615,data\SKPL.png
+Szybka Kolej Miejska ,0.9328,94694,1569898,#002878,data\SKMW.png

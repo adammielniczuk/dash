@@ -1,0 +1,6 @@
+reason,January,February,March,April,May,June,July,August,September,October,November,December
+low temperatures,0.06,0.01,0.26,0.06,0,0,0,0,0,0.03,0.1,0.37
+rain,0.03,0.01,0,0,0.01,0.01,0.04,0.13,0.41,0.27,0.29,0.08
+snow,0.03,0,0.06,0.19,0,0,0,0,0,0,0.19,0.54
+strong wind,0.87,0.98,0.65,0.57,0.44,0.04,0.15,0.11,0.02,0.56,0.42,0.01
+lightning,0.01,0,0.03,0.18,0.55,0.95,0.81,0.76,0.57,0.14,0,0

@@ -1,0 +1,14 @@
+,name,praca eksp,praca przew,pasaz,colors,Logo_Path
+0,PKP Intercity,35.61,54.68,17.23,#133C74,data\IC.png
+1,Polregio,29.03,18.59,25.47,#FF0000,data\REGIO.png
+2,Koleje Mazowieckie,10.37,7.96,17.26,#00A64D,data\KMZ.jpg
+3,Koleje Dolnośląskie,5.54,3.89,4.68,#F4CD00,data\KD.png
+4,Koleje Wielkopolskie,4.51,2.7,4.17,#E4000F,data\KW.png
+5,Koleje Śląskie,4.31,3.69,5.84,#0097F0,data\KS.png
+6,Łódzka Kolej Aglomeracyjna,2.71,1.37,2.53,#19171C,data\LKA.jpg
+7,SKM Trójmiato,2.1,3.62,12.73,#B59000,data\SKM.jpg
+8,Szybka Kolej Miejska,1.62,1.01,5.19,#002878,data\SKMW.png
+9,Koleje Małopolskie,1.61,1.19,2.06,#E63A2E,data\KM.jpg
+10,Arriva RP,1.32,0.39,0.67,#009CB3,data\Arriva.png
+11,Warszawska Kolej Dojazdowa,0.88,0.49,1.95,#000000,data\Arriva.png
+12,Others,0.4,0.44,0.21,#000000,data\Arriva.png

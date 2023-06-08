@@ -1,0 +1,6 @@
+reason,January,February,March,April,May,June,July,August,September,October,November,December
+Waiting for other trains and buses,0.12,0.17,0.19,0.21,0.19,0.16,0.1,0.12,0.15,0.19,0.13,0.11
+Waiting for a free track ,0.13,0.11,0.09,0.13,0.18,0.11,0.11,0.11,0.17,0.19,0.23,0.11
+Late exit from the parking tracks,0.28,0.25,0.14,0.18,0.16,0.12,0.04,0.02,0.02,0.02,0.02,0.05
+Secondary delay caused by Railway Company,0.44,0.45,0.56,0.47,0.45,0.54,0.47,0.4,0.31,0.28,0.19,0.26
+Secondary delay caused by Carrier Company,0.03,0.02,0.02,0.01,0.02,0.07,0.28,0.35,0.35,0.32,0.43,0.47
