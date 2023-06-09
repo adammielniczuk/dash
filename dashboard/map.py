@@ -52,7 +52,7 @@ layout = go.Layout(
     autosize=False,
     width=i_x,
     height=i_y,
-    margin=dict(l=15, r=25, t=15, b=15),
+    margin=dict(l=5, r=75, t=5, b=5),
     font={'family':'Segoe UI', 'size':15}
 )
 
