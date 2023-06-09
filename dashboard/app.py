@@ -1,4 +1,4 @@
-from shiny import App, render, ui
+from shiny import App, render, ui, reactive
 from shinywidgets import output_widget, render_widget
 import plotly.graph_objects as go
 import plotly.io as pio
@@ -7,6 +7,7 @@ from delay_reasons import fig
 from timeline import timeline
 from ranking_work import fig_rank
 from ranking_late import fig_late
+
 app_ui = ui.page_fluid(
    # shinyswatch.theme.darkly(),
     ui.div(ui.HTML('''
@@ -17,7 +18,8 @@ app_ui = ui.page_fluid(
             {'style':'background-color: rgba(255,255,255,0)'},
             ui.h5({'class':'card-title mt-0'}, '% of late trains in biggest polish cities'),
             output_widget("map_plot"),
-            
+            ui.input_switch("help", "help/about", False),
+            ui.output_text_verbatim("help_txt", placeholder=False)
             ),
         ui.panel_main(
             ui.navset_pill_card(
@@ -85,9 +87,20 @@ def server(input, output, session):
     @render_widget
     def late_plot():       
         return fig_late
+    @output
+    @render.text
+
+    @reactive.event(input.help, ignore_none=True)
+    def help_txt():
+        if input.help():
+            return 'This app shows data of different train companies in Poland\nand mostly focuses on delays of the trains\n\nChoose the graphs that you want to see with the blue buttons\nYou can hover over plots to see more\nTry clicking on legend entries\nThe app was made in shiny for python\nand deployed on github pages with shinylive\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n23'
+        else:
+            return ''
+
 
 app = App(app_ui, server)
 
 
 if __name__ == '__main__':
+    cnt=0
     app.run()
