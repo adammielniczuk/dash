@@ -9,8 +9,9 @@ from ranking_work import fig_rank
 from ranking_late import fig_late
 app_ui = ui.page_fluid(
    # shinyswatch.theme.darkly(),
-    ui.h3("How late are polish trains?"),
-    
+    ui.div(ui.HTML('''
+<head><title>Page Title</title><style>body{margin:0;padding:0;}.header{background-color:blue;text-align:center;padding:20px;}.header img{display:block;margin:0 auto;max-width:100%;height:auto;}.header h1{color:white;font-size:24px;margin:10px 0;}</style></head><body><div class="header"><img src="https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/pp.png" alt="Image"><h1>Title</h1></div>
+''')),
     ui.layout_sidebar(
         ui.panel_sidebar(
             {'style':'background-color: rgba(255,255,255,0)'},
@@ -51,7 +52,8 @@ app_ui = ui.page_fluid(
         ),   
         
 
-    )
+    ),
+    
 ) 
 
 
@@ -60,10 +62,7 @@ def server(input, output, session):
     @render.text
     def txt():
         return f"n*2 is 2"
-    @output
-    @render.image
-    def img():
-        return 'C:\\Users\\creep\\Desktop\\studia\\sem4\\dashboard\\dashboard\\data\\pp.png'
+    
     
     @output
     @render_widget

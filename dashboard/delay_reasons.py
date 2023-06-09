@@ -89,7 +89,8 @@ def create_plot(df, visible = False):
                 x = df.columns, 
                 y = data, 
                 name=index,
-                visible=visible
+                visible=visible,
+                hovertemplate="%{fullData.name}, %{x}: %{y}<extra></extra>"
             )
         )
 
