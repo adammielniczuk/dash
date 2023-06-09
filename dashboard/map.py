@@ -100,3 +100,12 @@ map_fig.update_layout(
 )
 
 
+map_fig.update_layout(
+    legend=dict(
+        orientation="h",
+        yanchor="top",
+        y=1.1,
+        xanchor="center",
+        x=0.14
+    )
+)
