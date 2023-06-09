@@ -1,10 +1,10 @@
 import plotly.graph_objects as go
 import pandas as pd
-from PIL import Image
-import os 
-os.chdir(__file__[:-15])
 
-df = pd.read_csv("data/companies_late.csv")
+import pyodide
+raw_path='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data'
+
+df = pd.read_csv(pyodide.http.open_url(raw_path+"/companies_late.csv"))
 
 images = []
 
@@ -15,7 +15,7 @@ def create_plot(attribute, visible = False):
     df_teporary = df_teporary.reset_index(drop=True)
 
     for index, row in df_teporary.iterrows():
-        im = Image.open(row["Logo_Path"])
+        im = raw_path+ row["Logo_Path"][4:]
         size_factor = df_teporary.shape[0]
         pozition_factor = df_teporary[attribute].max()
         images.append(

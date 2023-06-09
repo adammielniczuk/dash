@@ -6,14 +6,23 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from map import map_fig
 from delay_reasons import fig
-
+from timeline import timeline
 
 
 app_ui = ui.page_fluid(
-    ui.h2("Hello akadsubbhjkdcvbmhdsf!"),
-    ui.input_slider("n", "N", 0, 100, 20),
-    ui.output_text_verbatim("txt"),
-    output_widget("plot")
+    ui.h3("How late are polish trains?"),
+    ui.layout_sidebar(
+        ui.panel_sidebar(
+            output_widget("timeline_plot")
+        )
+    ),
+    ui.panel_main(
+        ui.div(
+            ui.h5('graph'),
+            output_widget("plot")
+        )
+    )
+
 )
 
 
@@ -29,7 +38,10 @@ def server(input, output, session):
     def plot():       
         return fig  
     
-
+    @output
+    @render_widget
+    def timeline_plot():       
+        return timeline
 
 app = App(app_ui, server)
 
