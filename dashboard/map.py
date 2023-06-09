@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import pandas as pd
 import base64
-import pyodide
+#import pyodide
 from pathlib import Path
 
 
@@ -11,17 +11,17 @@ from pathlib import Path
 #late_path=os.path.join(data_folder, 'city_late.csv')
 #img=Image.open(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/map.png'))
 i_x, i_y = 960, 960
-scale = 1
-i_x /= scale
-i_y /= scale
+scale = 0.6
+i_x *= scale
+i_y *= scale
 
 dataF=Path(__file__).parent / 'data'
 
-cities_coordinates = pd.read_csv(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/cities.csv'))
+cities_coordinates = pd.read_csv(('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/cities.csv'))
 cities_coordinates["Latitude"] = cities_coordinates["Latitude"].apply(lambda x : (x - 48.84) / (55.32 - 48.84))
 cities_coordinates["Longitude"] = cities_coordinates["Longitude"].apply(lambda x : (x - 13.50) / (24.80 - 13.50))
 
-late_times = pd.read_csv(pyodide.http.open_url('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/city_late.csv'), sep=";")
+late_times = pd.read_csv(('https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/city_late.csv'), sep=";")
 late_times = late_times.sort_values('station')
 late_times = late_times.set_index('station')
 
@@ -34,22 +34,26 @@ traces = []
 for index, row in cities_coordinates.iterrows():
     value = late_times.iloc[index]["january"]
     trace = go.Pie(
+        textinfo='none',
         labels=labels,
         values=[value, 1-value],
         domain=dict(x=[row['Longitude']-0.05, row['Longitude']+0.05], y=[row['Latitude']-0.05, row['Latitude']+0.05]),
-        name=stations[index]
+        name=stations[index],
+        #hoverinfo="label+name+percent"
+        hovertemplate="%{fullData.name}<br>%{label}<br>%{value:.1%}<extra></extra>"
     )
     traces.append(trace)
 
 # Create the layout for the chart with a custom CSS background
 layout = go.Layout(
-    title='Percent of late trains for a given mounth',
+    title='',
     xaxis=dict(visible=False),
     yaxis=dict(visible=False),
     autosize=False,
     width=i_x,
     height=i_y,
-    margin=dict(l=0, r=0, t=30, b=0)
+    margin=dict(l=15, r=25, t=15, b=15),
+    font={'family':'Segoe UI', 'size':15}
 )
 
 # Create the figure and add the traces and layout

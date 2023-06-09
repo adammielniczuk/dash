@@ -10,7 +10,7 @@ Koleje Wielkopolskie,0.9065,165792,2782550,#E4000F,data\KW.png
 LEO Express,0.7583,581,14248,#F18103,data\LEO.jpg
 Łódzka Kolej Aglomeracyjna,0.9125,105712,1496405,#19171C,data\LKA.jpg
 ODEG Ostdeutsche Eisenbahn,0.9429,1349,18056,#025F64,data\ODEG.jpg
-Parowozownia Wolsztyn,1,0,,#000000,data\Wolsztyn.png
+Parowozownia Wolsztyn,0.9999,1,1,#000000,data\Wolsztyn.png
 PKP CARGO ,0.9084,48,897,#005CAA,data\PKP.jpg
 PKP INTERCITY,0.6953,769913,21720390,#133C74,data\IC.png
 SKM Trójmiato ,0.9597,79952,912839,#B59000,data\SKM.jpg

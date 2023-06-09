@@ -1,12 +1,12 @@
 import plotly.graph_objects as go
 import pandas as pd
-import pyodide
+#import pyodide
 raw_path='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data'
-df = pd.read_csv(pyodide.http.open_url(raw_path+"/companies_ranking.csv"))
+df = pd.read_csv((raw_path+"/companies_ranking.csv"))
 
 images = []
 
-fig = go.Figure()
+fig_rank = go.Figure()
 
 def create_plot(attribute, visible = False):
     df_teporary = df.sort_values(attribute, ascending=True)
@@ -32,13 +32,14 @@ def create_plot(attribute, visible = False):
             )
         )
 
-    fig.add_trace(go.Bar(
+    fig_rank.add_trace(go.Bar(
     y=df_teporary['name'],  # Swap x and y
     x=df_teporary[attribute],  # Swap x and y
     name=attribute,
     marker_color=df_teporary['colors'],
     orientation='h',  # Set orientation to 'h' for horizontal chart
-    visible=visible
+    visible=visible,
+    hovertemplate="%{x}%<extra></extra>"
 ))
     
 create_plot('praca eksp', visible=True)
@@ -47,13 +48,14 @@ create_plot('praca przew')
 
 
 
-fig.update_layout(
-    title='Comparison of Work Experience, Predictive Work, and Passengers',
+fig_rank.update_layout(
+    title="",
     xaxis=dict(title='Percentage'),  # Swap x and y axis titles
-    yaxis=dict(title='Company'),  # Swap x and y axis titles
+    yaxis=dict(title=''),  # Swap x and y axis titles
     barmode='group',
     plot_bgcolor='rgba(0, 0, 0, 0)',
-    images = images
+    images = images,
+    margin=dict(t=10,b=10,r=10, l=10), font={'family':'Segoe UI', 'size':15}
 )
 
 
@@ -81,16 +83,19 @@ for i in range(len(images)):
 updatemenu = [
     {
         'buttons': [
-            {'label': 'Praca eksp', 'method': 'update', 'args': [{'visible': [True, False, False]}, viz_images1]},
-            {'label': 'Praca przew', 'method': 'update', 'args': [{'visible': [False, True, False]}, viz_images2]},
-            {'label': 'Pasaz', 'method': 'update', 'args': [{'visible': [False, False, True]}, viz_images3]}
+            {'label': 'Kilometers * No. of trains', 'method': 'update', 'args': [{'visible': [True, False, False]}, viz_images1]},
+            {'label': 'No. of passengers', 'method': 'update', 'args': [{'visible': [False, True, False]}, viz_images2]},
+            {'label': 'Kilometers * No. of passengers', 'method': 'update', 'args': [{'visible': [False, False, True]}, viz_images3]}
         ],
         'direction': 'down',
         'showactive': True,
+        'x':0,
+        'y':1.15
+
     }
 ]
 
 # Add dropdown menu to the layout
-fig.update_layout(showlegend=False, updatemenus=updatemenu)
+fig_rank.update_layout(showlegend=False, updatemenus=updatemenu)
 
-fig.show()
+

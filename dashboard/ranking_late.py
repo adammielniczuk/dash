@@ -1,14 +1,14 @@
 import plotly.graph_objects as go
 import pandas as pd
 
-import pyodide
+#import pyodide
 raw_path='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data'
 
-df = pd.read_csv(pyodide.http.open_url(raw_path+"/companies_late.csv"))
+df = pd.read_csv((raw_path+"/companies_late.csv"))
 
 images = []
 
-fig = go.Figure()
+fig_late = go.Figure()
 
 def create_plot(attribute, visible = False):
     df_teporary = df.sort_values(attribute, ascending=True)
@@ -34,7 +34,7 @@ def create_plot(attribute, visible = False):
             )
         )
 
-    fig.add_trace(go.Bar(
+    fig_late.add_trace(go.Bar(
     y=df_teporary['Company'],  # Swap x and y
     x=df_teporary[attribute],  # Swap x and y
     name=attribute,
@@ -49,7 +49,7 @@ create_plot('late_total_time')
 
 
 
-fig.update_layout(
+fig_late.update_layout(
     title='Comparison of Work Experience, Predictive Work, and Passengers',
     xaxis=dict(title='Percentage'),  # Swap x and y axis titles
     yaxis=dict(title='Company'),  # Swap x and y axis titles
@@ -93,6 +93,6 @@ updatemenu = [
 ]
 
 # Add dropdown menu to the layout
-fig.update_layout(showlegend=False, updatemenus=updatemenu)
+fig_late.update_layout(showlegend=False, updatemenus=updatemenu)
 
-fig.show()
+fig_late.show()
