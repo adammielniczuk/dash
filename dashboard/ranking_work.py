@@ -1,8 +1,8 @@
 import plotly.graph_objects as go
 import pandas as pd
-#import pyodide
+import pyodide
 raw_path='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data'
-df = pd.read_csv((raw_path+"/companies_ranking.csv"))
+df = pd.read_csv(pyodide.http.open_url(raw_path+"/companies_ranking.csv"))
 
 images = []
 

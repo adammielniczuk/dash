@@ -10,7 +10,7 @@ from ranking_late import fig_late
 app_ui = ui.page_fluid(
    # shinyswatch.theme.darkly(),
     ui.div(ui.HTML('''
-<head><title>Page Title</title><style>body{margin:0;padding:0;}.header{background-color:blue;text-align:center;padding:20px;}.header img{display:block;margin:0 auto;max-width:100%;height:auto;}.header h1{color:white;font-size:24px;margin:10px 0;}</style></head><body><div class="header"><img src="https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/pp.png" alt="Image"><h1>Title</h1></div>
+<head><title>TrainStat</title><style>body{margin:-2px;padding:-2px;}.header{background-color:#0d6efd;text-align:center;padding:20px;}.header img{display:block;float:left;margin:0 auto;max-width:3%;height:auto;}.header h1{color:white;font-size:34px;font-family:Segoe UI;margin:10px 0;}</style></head><body><div class="header"><img src="https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/pp.png" alt="Image"><h1>TrainStat</h1></div>
 ''')),
     ui.layout_sidebar(
         ui.panel_sidebar(
