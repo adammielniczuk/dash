@@ -15,7 +15,7 @@ app_ui = ui.page_fluid(
     ui.layout_sidebar(
         ui.panel_sidebar(
             {'style':'background-color: rgba(255,255,255,0)'},
-            ui.h5({'class':'card-title mt-0'}, 'graph'),
+            ui.h5({'class':'card-title mt-0'}, '% of late trains in biggest polish cities'),
             output_widget("map_plot"),
             
             ),
