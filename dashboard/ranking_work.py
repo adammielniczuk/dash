@@ -55,7 +55,7 @@ fig_rank.update_layout(
     barmode='group',
     plot_bgcolor='rgba(0, 0, 0, 0)',
     images = images,
-    margin=dict(t=10,b=10,r=10, l=10), font={'family':'Segoe UI', 'size':15}
+    margin=dict(t=10,b=10,r=50, l=10), font={'family':'Segoe UI', 'size':15}
 )
 
 
