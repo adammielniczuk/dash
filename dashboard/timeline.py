@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
-
+import os
+os.chdir(__file__[:-11])
 df = pd.read_csv("data/timeline.csv")
 
 fig = go.Figure()

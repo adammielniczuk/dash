@@ -1,7 +1,8 @@
 import plotly.graph_objects as go
 import pandas as pd
 from PIL import Image
-
+import os
+os.chdir(__file__[:-15])
 df = pd.read_csv("data/companies_ranking.csv")
 
 images = []

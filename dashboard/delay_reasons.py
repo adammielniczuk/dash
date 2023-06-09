@@ -1,19 +1,21 @@
 import plotly.graph_objects as go
 import pandas as pd
 
-df = pd.read_csv("data/delay_reasons.csv")
+raw_path='https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data'
+
+df = pd.read_csv(raw_path+"/delay_reasons.csv")
 df = df.set_index('reason')
 
-df_infrastructure = pd.read_csv("data/infrastructure.csv")
+df_infrastructure = pd.read_csv(raw_path+"/infrastructure.csv")
 df_infrastructure = df_infrastructure.set_index('reason')
 
-df_logistics = pd.read_csv("data/logistics.csv")
+df_logistics = pd.read_csv(raw_path+"/logistics.csv")
 df_logistics = df_logistics.set_index('reason')
 
-df_weather = pd.read_csv("data/weather.csv")
+df_weather = pd.read_csv(raw_path+"/weather.csv")
 df_weather =df_weather.set_index('reason')
 
-df_crime = pd.read_csv("data/crime.csv")
+df_crime = pd.read_csv(raw_path+"/crime.csv")
 df_crime = df_crime.set_index('reason')
 
 all_df = [df, df_infrastructure, df_logistics, df_weather, df_crime]
@@ -92,6 +94,6 @@ create_plot(df, visible=True)
 for df in all_df[1:]:
     create_plot(df)
 
-fig.show()
+
 
 

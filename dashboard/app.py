@@ -5,6 +5,7 @@ from shinywidgets import output_widget, render_widget
 import plotly.graph_objects as go
 import plotly.io as pio
 from map import map_fig
+from delay_reasons import fig
 
 
 
@@ -26,7 +27,7 @@ def server(input, output, session):
     @output
     @render_widget
     def plot():       
-        return map_fig  
+        return fig  
     
 
 
