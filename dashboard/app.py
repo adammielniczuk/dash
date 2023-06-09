@@ -14,26 +14,27 @@ app_ui = ui.page_fluid(
 <head><title>TrainStat</title><style>body{margin:-2px;padding:-2px;}.header{background-color:#0d6efd;text-align:center;padding:20px;}.header img{display:block;float:left;margin:0 auto;max-width:3%;height:auto;}.header h1{color:white;font-size:34px;font-family:Segoe UI;margin:10px 0;}</style></head><body><div class="header"><img src="https://raw.githubusercontent.com/adammielniczuk/dash/main/dashboard/data/pp.png" alt="Image"><h1>TrainStat</h1></div>
 ''')),
     ui.layout_sidebar(
-        ui.panel_sidebar(
-            {'style':'background-color: rgba(255,255,255,0)'},
+        ui.panel_sidebar({'style':'background-color: rgba(255,255,255,0)'},
             ui.navset_pill_card(
-                ui.nav('% of late trains in biggest polish cities',
+                ui.nav("% of late trains in biggest polish cities",
                     {'class': "card-body"},
-        
+
                     output_widget("map_plot"),
                     
                 ),
-                ui.nav("Table of average late % for each city",
+                ui.nav("table of average % late trains",
                     {'class': "card-body"},
-                    
+
                     ui.output_table("table_plot"),
                     
                 ),
-            
-            ui.input_switch("help", "help/about", False),
-            ui.output_text_verbatim("help_txt", placeholder=False)
             ),
-        ),
+         
+         #   ui.h5({'class':'card-title mt-0'}, '% of late trains in biggest polish cities'),
+         #   output_widget("map_plot"),
+            ui.input_switch("help", "help/about", False),
+            ui.output_text_verbatim("help_txt", placeholder=False),
+            ),
         ui.panel_main(
             ui.navset_pill_card(
                 ui.nav("The reasons of the delays in different months",
@@ -49,7 +50,7 @@ app_ui = ui.page_fluid(
                     
                 ),
             ),
-             ui.navset_pill_card(
+            ui.navset_pill_card(
                 ui.nav("Number of late trains over time",
                     {'class': "card-body"},
 
@@ -83,10 +84,7 @@ def server(input, output, session):
     @render_widget
     def plot():       
         return fig 
-    @output
-    @render.table
-    def table_plot():       
-        return fig 
+    
     @output
     @render_widget
     def timeline_plot():       
@@ -112,7 +110,10 @@ def server(input, output, session):
             return 'This app shows data of different train companies in Poland\nand mostly focuses on delays of the trains\n\nChoose the graphs that you want to see with the blue buttons\nYou can hover over plots to see more\nTry clicking on legend entries\nThe app was made in shiny for python\nand deployed on github pages with shinylive\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n23'
         else:
             return ''
-
+    @output
+    @render.table
+    def table_plot():
+        return df
 
 app = App(app_ui, server)
 
