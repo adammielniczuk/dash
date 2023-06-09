@@ -29,8 +29,7 @@ app_ui = ui.page_fluid(
                     ui.output_table("table_plot"),
                     
                 ),
-            ui.h5({'class':'card-title mt-0'}, '% of late trains in biggest polish cities'),
-            output_widget("map_plot"),
+            
             ui.input_switch("help", "help/about", False),
             ui.output_text_verbatim("help_txt", placeholder=False)
             ),
