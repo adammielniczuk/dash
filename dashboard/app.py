@@ -7,7 +7,7 @@ from delay_reasons import fig
 from timeline import timeline
 from ranking_work import fig_rank
 from ranking_late import fig_late
-
+from table import df
 app_ui = ui.page_fluid(
    # shinyswatch.theme.darkly(),
     ui.div(ui.HTML('''
@@ -16,11 +16,25 @@ app_ui = ui.page_fluid(
     ui.layout_sidebar(
         ui.panel_sidebar(
             {'style':'background-color: rgba(255,255,255,0)'},
+            ui.navset_pill_card(
+                ui.nav('% of late trains in biggest polish cities',
+                    {'class': "card-body"},
+        
+                    output_widget("map_plot"),
+                    
+                ),
+                ui.nav("Table of average late % for each city",
+                    {'class': "card-body"},
+                    
+                    ui.output_table("table_plot"),
+                    
+                ),
             ui.h5({'class':'card-title mt-0'}, '% of late trains in biggest polish cities'),
             output_widget("map_plot"),
             ui.input_switch("help", "help/about", False),
             ui.output_text_verbatim("help_txt", placeholder=False)
             ),
+        ),
         ui.panel_main(
             ui.navset_pill_card(
                 ui.nav("The reasons of the delays in different months",
@@ -70,7 +84,10 @@ def server(input, output, session):
     @render_widget
     def plot():       
         return fig 
-    
+    @output
+    @render.table
+    def table_plot():       
+        return fig 
     @output
     @render_widget
     def timeline_plot():       
